@@ -1,0 +1,209 @@
+
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#075e45">
+<title>Pembayaran SANTNET</title>
+<style>
+:root {
+  --green: #075e45;
+  --dark: #123b30;
+  --light: #f3f8f5;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: Arial, sans-serif;
+  background: var(--light);
+  color: #20332b;
+}
+header {
+  background: var(--green);
+  color: white;
+  text-align: center;
+  padding: 28px 16px;
+}
+header h1 { margin: 0 0 8px; font-size: 27px; }
+header p { margin: 0; line-height: 1.6; }
+main {
+  width: min(100% - 28px, 560px);
+  margin: 22px auto 36px;
+}
+.card {
+  background: white;
+  border-radius: 16px;
+  padding: 22px;
+  margin-bottom: 16px;
+  box-shadow: 0 4px 18px #173d3010;
+}
+h2 { margin: 0 0 12px; font-size: 19px; }
+.intro { line-height: 1.7; }
+.payment {
+  display: block;
+  width: 100%;
+  text-align: left;
+  border: 1px solid #d7e5dc;
+  border-radius: 12px;
+  background: white;
+  padding: 15px;
+  margin-top: 12px;
+  color: var(--dark);
+  cursor: pointer;
+  font-size: 16px;
+}
+.payment:hover, .payment:focus {
+  border-color: var(--green);
+  background: #f2faf5;
+}
+.payment strong { display: block; margin-bottom: 5px; }
+.detail {
+  display: none;
+  margin-top: 10px;
+  padding: 15px;
+  border-radius: 12px;
+  background: #edf7f0;
+  line-height: 1.7;
+  overflow-wrap: anywhere;
+}
+.detail.show { display: block; }
+.action {
+  display: inline-block;
+  border: 0;
+  border-radius: 9px;
+  padding: 11px 15px;
+  margin: 8px 5px 0 0;
+  background: var(--green);
+  color: white;
+  text-decoration: none;
+  cursor: pointer;
+  font-size: 14px;
+}
+.map-action { background: #2468b4; }
+.note {
+  font-size: 13px;
+  line-height: 1.6;
+  color: #56665e;
+}
+footer {
+  text-align: center;
+  padding: 8px 10px 28px;
+  color: #52665b;
+  font-size: 13px;
+  line-height: 1.7;
+}
+</style>
+</head>
+<body>
+<header>
+  <h1>SANTNET</h1>
+  <p>Halaman Informasi Pembayaran Internet</p>
+  <p>Salam sehat dan sukses selalu bersama SANTNET.</p>
+</header>
+
+<main>
+  <section class="card intro">
+    <h2>Sobat SANTNET yang kami hormati,</h2>
+    Semoga Anda senantiasa sehat, usaha berjalan lancar,
+    dan rezeki semakin bertambah. Amin.
+    <p>Silakan pilih metode pembayaran tagihan internet Anda di bawah ini.</p>
+  </section>
+
+  <section class="card">
+    <h2>Pilih Metode Pembayaran</h2>
+
+    <button class="payment" onclick="showPayment('dana')">
+      <strong>DANA</strong>
+      Pembayaran melalui akun DANA
+    </button>
+    <div class="detail" id="dana">
+      <strong>Tujuan DANA</strong><br>
+      <span>081327998518</span><br>
+      <button class="action" onclick="copyText('081327998518')">
+        Salin Nomor DANA
+      </button>
+      <p class="note">Buka aplikasi DANA, masukkan nomor tujuan dan nominal tagihan, lalu periksa nama penerima sebelum mengonfirmasi.</p>
+    </div>
+
+    <button class="payment" onclick="showPayment('linkaja')">
+      <strong>LinkAja</strong>
+      Pembayaran melalui akun LinkAja
+    </button>
+    <div class="detail" id="linkaja">
+      <strong>Tujuan LinkAja</strong><br>
+      <span>081327998518</span><br>
+      <button class="action" onclick="copyText('081327998518')">
+        Salin Nomor LinkAja
+      </button>
+      <p class="note">Buka aplikasi LinkAja, masukkan nomor tujuan dan nominal tagihan, lalu periksa nama penerima sebelum mengonfirmasi.</p>
+    </div>
+
+    <button class="payment" onclick="showPayment('bni')">
+      <strong>Transfer Bank BNI</strong>
+      Pembayaran melalui transfer bank
+    </button>
+    <div class="detail" id="bni">
+      <strong>Nomor rekening</strong><br>
+      <span>1179205735</span><br>
+      <strong>Atas nama:</strong> Agus Sigit Santosa<br>
+      <button class="action" onclick="copyText('1179205735')">
+        Salin Nomor Rekening
+      </button>
+      <p class="note">Pastikan nama penerima dan nominal benar sebelum menyelesaikan transfer.</p>
+    </div>
+
+    <button class="payment" onclick="showPayment('tunai')">
+      <strong>Pembayaran Tunai</strong>
+      Lihat lokasi pembayaran di Google Maps
+    </button>
+    <div class="detail" id="tunai">
+      <strong>Lokasi pembayaran tunai</strong><br>
+      Warung Makan Gubuk Ijo<br>
+      Kabupaten Kulon Progo, Daerah Istimewa Yogyakarta
+      <br>
+      <a class="action map-action"
+         href="https://maps.app.goo.gl/ySLULmQdzxEgiWHcA?g_st=ac"
+         target="_blank" rel="noopener noreferrer">
+        Buka Lokasi di Google Maps
+      </a>
+    </div>
+  </section>
+
+  <section class="card intro">
+    <h2>Konfirmasi Pembayaran</h2>
+    Setelah melakukan pembayaran, mohon kirimkan bukti pembayaran kepada petugas SANTNET untuk diverifikasi.
+    <p class="note">
+      Status tagihan hanya dinyatakan LUNAS setelah pembayaran diperiksa dan dikonfirmasi oleh petugas SANTNET.
+      Halaman ini belum memproses atau mendeteksi pembayaran secara otomatis.
+    </p>
+  </section>
+</main>
+
+<footer>
+  Terima kasih atas kepercayaan dan kesetiaan Anda menggunakan layanan SANTNET.<br>
+  Semoga Anda dan keluarga selalu sehat, usaha lancar, dan rezeki berkah.<br>
+  <strong>Salam sehat dan sukses selalu bersama SANTNET.</strong>
+</footer>
+
+<script>
+function showPayment(id) {
+  document.querySelectorAll('.detail').forEach(function (item) {
+    item.classList.remove('show');
+  });
+  document.getElementById(id).classList.add('show');
+}
+function copyText(value) {
+  if (navigator.clipboard && window.isSecureContext) {
+    navigator.clipboard.writeText(value).then(function () {
+      alert('Nomor berhasil disalin: ' + value);
+    }).catch(function () {
+      window.prompt('Silakan salin nomor berikut:', value);
+    });
+  } else {
+    window.prompt('Silakan salin nomor berikut:', value);
+  }
+}
+</script>
+</body>
+</html>
